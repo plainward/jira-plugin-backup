@@ -1,0 +1,18 @@
+#plugin-backup-table {
+    margin-top: 16px;
+}
+
+#plugin-backup-table td:nth-child(2),
+#plugin-backup-table td:nth-child(3) {
+    white-space: nowrap;
+    width: 120px;
+}
+
+#plugin-backup-table td:nth-child(4) {
+    width: 100px;
+    text-align: center;
+}
+
+.aui-page-header-actions {
+    padding-top: 8px;
+}

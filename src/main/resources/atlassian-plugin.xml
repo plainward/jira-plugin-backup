@@ -1,0 +1,49 @@
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2">
+    <plugin-info>
+        <description>${project.description}</description>
+        <version>${project.version}</version>
+        <vendor name="${project.organization.name}" url="${project.organization.url}" />
+        <param name="plugin-icon">images/pluginIcon.png</param>
+        <param name="plugin-logo">images/pluginLogo.png</param>
+    </plugin-info>
+
+    <!-- i18n -->
+    <resource type="i18n" name="i18n" location="jira-plugin-backup"/>
+
+    <!-- REST -->
+    <rest name="Plugin Backup REST" key="plugin-backup-rest" path="/plugin-backup" version="1.0">
+        <description>Plugin Backup REST API</description>
+    </rest>
+
+    <!-- Admin Servlet -->
+    <servlet name="Plugin Backup" key="plugin-backup-servlet"
+             class="com.plainward.jira.pluginbackup.servlet.PluginBackupServlet">
+        <description>Plugin Backup admin page</description>
+        <url-pattern>/plugin-backup</url-pattern>
+    </servlet>
+
+    <!-- Admin menu -->
+    <web-section name="Plugin Backup Section" key="plugin-backup-section"
+                 location="admin_plugins_menu" weight="120">
+        <label key="plugin-backup.admin.section"/>
+    </web-section>
+
+    <web-item name="Plugin Backup Link" key="plugin-backup-link"
+              section="admin_plugins_menu/plugin-backup-section" weight="10">
+        <label key="plugin-backup.admin.link"/>
+        <link>/plugins/servlet/plugin-backup</link>
+    </web-item>
+
+    <!-- Web Resources -->
+    <web-resource key="plugin-backup-resources" name="Plugin Backup Web Resources">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+        <dependency>com.atlassian.auiplugin:aui-table-sortable</dependency>
+
+        <resource type="download" name="jira-plugin-backup.css" location="/css/jira-plugin-backup.css"/>
+        <resource type="download" name="jira-plugin-backup.js" location="/js/jira-plugin-backup.js"/>
+        <resource type="download" name="images/" location="/images"/>
+
+        <context>plugin-backup</context>
+    </web-resource>
+
+</atlassian-plugin>

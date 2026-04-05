@@ -1,0 +1,49 @@
+<html>
+<head>
+    <title>$i18n.getText("plugin-backup.title")</title>
+    <meta name="decorator" content="atl.admin">
+    <meta name="admin.active.section" content="admin_plugins_menu/plugin-backup-section">
+    <meta name="admin.active.tab" content="plugin-backup-link">
+    $webResourceManager.requireResource("com.plainward.jira.pluginbackup.jira-plugin-backup:plugin-backup-resources")
+</head>
+<body>
+
+<div class="aui-page-header">
+    <div class="aui-page-header-main">
+        <h2>$i18n.getText("plugin-backup.title")</h2>
+    </div>
+    <div class="aui-page-header-actions">
+        <div class="aui-buttons">
+            <button id="download-all-btn" class="aui-button" disabled>
+                <span class="aui-icon aui-icon-small aui-iconfont-export"></span>
+                $i18n.getText("plugin-backup.btn.download.all")
+            </button>
+        </div>
+    </div>
+</div>
+
+<div id="plugin-backup-message" class="aui-message aui-message-info" style="display:none;"></div>
+
+<div id="plugin-backup-loading" class="aui-message aui-message-info">
+    <p>$i18n.getText("plugin-backup.loading")</p>
+</div>
+
+<table id="plugin-backup-table" class="aui aui-table-sortable" style="display:none;">
+    <thead>
+        <tr>
+            <th>$i18n.getText("plugin-backup.table.name")</th>
+            <th>$i18n.getText("plugin-backup.table.size")</th>
+            <th>$i18n.getText("plugin-backup.table.modified")</th>
+            <th>$i18n.getText("plugin-backup.table.actions")</th>
+        </tr>
+    </thead>
+    <tbody id="plugin-backup-tbody">
+    </tbody>
+</table>
+
+<script>
+    var PLUGIN_BACKUP_REST_URL = AJS.contextPath() + "/rest/plugin-backup/1.0";
+</script>
+
+</body>
+</html>
